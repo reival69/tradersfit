@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TraderFit — Masters Traders: formación, herramientas y comunidad de trading</title>
+<title>TradersFit — Masters Traders: formación, herramientas y comunidad de trading</title>
 <!-- Quitar esta línea cuando se publique en tradersfit.se -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Academia de trading de cero a avanzado, app con IA, señales, sesiones en vivo y bots en una sola membresía. Conoce Masters Traders.">
 <!-- Enlace de registro: pégalo aquí y todos los botones «Quiero empezar» lo usarán -->
-<meta name="registro" content="">
+<meta name="registro" content="https://masterstraders.academy/?mst_ref=Bjwcr2vu8P">
 <link rel="icon" href="assets/img/traderfit-icon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e1013">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="TraderFit">
-<meta property="og:title" content="TraderFit — Formación, herramientas y comunidad de trading">
+<meta property="og:site_name" content="TradersFit">
+<meta property="og:title" content="TradersFit — Formación, herramientas y comunidad de trading">
 <meta property="og:description" content="Academia de trading de cero a avanzado, app con IA, señales, sesiones en vivo y bots en una sola membresía.">
 <meta property="og:image" content="https://tradersfit.se/assets/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,19 +24,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
+<!-- Pantalla de carga; si site.js no llegara a cargar, la página se muestra igual a los 10 s -->
+<script>document.documentElement.classList.add("is-loading");setTimeout(function(){document.documentElement.classList.remove("is-loading")},10000)</script>
 </head>
 <body>
+<div class="preloader" aria-hidden="true">
+  <img src="assets/img/traderfit-icon.svg" alt="" width="84" height="84">
+  <p class="preloader-count"><span id="preloader-num">0</span>%</p>
+  <div class="preloader-bar"><span id="preloader-bar"></span></div>
+</div>
 <header class="site-header">
   <div class="wrap header-row">
-    <a class="brand" href="#inicio" aria-label="TraderFit, inicio">
+    <a class="brand" href="#inicio" aria-label="TradersFit, inicio">
       <img src="assets/img/traderfit-icon.svg" alt="" width="36" height="36">
-      <span>Trader<b>Fit</b></span>
+      <span>Traders<b>Fit</b></span>
     </a>
     <nav class="nav" aria-label="Menú principal">
       <a href="#ecosistema">Ecosistema</a>
-      <a href="#fundador">Fundador</a>
-      <a href="#membresia">Membresía</a>
-      <a href="#referidos">Referidos</a>
     </nav>
     <a class="btn btn-gold btn-sm js-registro" href="#empezar">Quiero empezar</a>
   </div>
@@ -115,33 +119,14 @@
           <li><span class="num">03</span><div><h3>Señales</h3><p>Recibe las señales del mentor.</p></div></li>
           <li><span class="num">04</span><div><h3>Sesiones en vivo</h3><p>Con el mentor, cada día.</p></div></li>
           <li><span class="num">05</span><div><h3>EMABOT</h3><p>Trading automatizado que ejecuta operaciones según una estrategia predefinida. Eliges riesgo bajo, medio o alto y ajustas el lotaje a tu capital y tu perfil.</p></div></li>
+          <li><span class="num">06</span><div><h3>12 bots probados y funcionando</h3><p>Te permiten operar sin estar presente.</p></div></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt" id="fundador">
-    <div class="wrap split">
-      <div>
-        <p class="eyebrow">Detrás de todo esto</p>
-        <h2>Emanuel Hernández</h2>
-        <p class="role">Fundador y mentor</p>
-        <ul class="bullets">
-          <li>Inversionista con más de <strong>15 años de experiencia</strong> en los mercados financieros.</li>
-          <li>Autor del libro <strong>«El Camino del Trader»</strong>, bestseller en Amazon.</li>
-          <li>Fundador de Masters Traders, una comunidad con <strong>más de 26.000 estudiantes</strong>.</li>
-          <li>Creó un ecosistema de herramientas con inteligencia artificial, entrenadas con años de experiencia real en los mercados.</li>
-          <li>Su misión: que cualquier persona tenga acceso a estrategias y tecnología de nivel profesional.</li>
-        </ul>
-      </div>
-      <picture class="split-img portrait">
-        <source srcset="assets/img/emanuel.webp" type="image/webp">
-        <img src="assets/img/emanuel.jpg" alt="Emanuel Hernández, fundador de Masters Traders" width="424" height="812" loading="lazy">
-      </picture>
-    </div>
-  </section>
 
-  <section class="section">
+  <section class="section section-alt">
     <div class="wrap">
       <p class="eyebrow">Masters Traders Academy</p>
       <h2>Más que una academia, una comunidad global</h2>
@@ -160,77 +145,9 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="membresia">
-    <div class="wrap">
-      <p class="eyebrow">Una membresía, todo el ecosistema</p>
-      <h2>Todo en un solo lugar</h2>
-      <div class="pricing">
-        <div class="price-card">
-          <p class="price-label">Membresía Masters Traders</p>
-          <p class="price">$139 <span>USD</span></p>
-          <a class="btn btn-gold js-registro" href="#empezar">Invierte en tu formación</a>
-        </div>
-        <ul class="features features-plain">
-          <li><div><h3>Acceso completo</h3><p>Academia, app con IA, bots, señales y sesiones en vivo.</p></div></li>
-          <li><div><h3>Comunidad y networking</h3><p>Creces rodeado de gente que va hacia lo mismo.</p></div></li>
-          <li><div><h3>Plan de referidos</h3><p>Si recomiendas la membresía, puedes recibir comisiones que ayuden a cubrir su coste.</p></div></li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap">
-      <p class="eyebrow">Alianzas estratégicas</p>
-      <h2>Operas en brokers regulados. Tu dinero nunca pasa por Masters Traders</h2>
-      <div class="cards cards-4">
-        <article class="card"><h3>Brokers de primer nivel</h3><p>Masters Traders trabaja con Exness, VexPro y Bridge Markets, entidades reguladas.</p></article>
-        <article class="card"><h3>Fondos protegidos</h3><p>Tu dinero está en tu cuenta del broker, a tu nombre.</p></article>
-        <article class="card"><h3>Ejecución rápida</h3><p>Tus órdenes entran al precio que ves, con condiciones institucionales.</p></article>
-        <article class="card"><h3>Tu capital, bajo tu control</h3><p>Depositas y retiras tú, directamente en el broker.</p></article>
-      </div>
-    </div>
-  </section>
 
-  <section class="section section-alt" id="comunidad">
-    <div class="wrap">
-      <p class="eyebrow">Comunidad</p>
-      <h2>Lo que comparten nuestros miembros</h2>
-      <picture>
-        <source srcset="assets/img/testimonios.webp" type="image/webp">
-        <img class="wide-img" src="assets/img/testimonios.jpg" alt="Capturas de operaciones y mensajes compartidos por miembros de la comunidad Masters Traders" width="1669" height="942" loading="lazy">
-      </picture>
-      <p class="note">Capturas compartidas por miembros. Son experiencias individuales: no representan resultados típicos ni garantizan resultados futuros.</p>
-    </div>
-  </section>
 
-  <section class="section" id="referidos">
-    <div class="wrap">
-      <p class="eyebrow">Plan de referidos</p>
-      <h2>Comisiones por cada persona activa en tu red</h2>
-      <p class="section-lead">Recibes una comisión por cada miembro activo, hasta 11 niveles de profundidad.</p>
-      <div class="levels">
-        <div class="level"><span>Nivel 1</span><strong>$30</strong></div>
-        <div class="level"><span>Niveles 2 y 3</span><strong>$10</strong></div>
-        <div class="level"><span>Niveles 4 y 5</span><strong>$5</strong></div>
-        <div class="level"><span>Niveles 6 y 7</span><strong>$3</strong></div>
-        <div class="level"><span>Niveles 8 a 11</span><strong>$1</strong></div>
-      </div>
-      <h3 class="sub">Rangos por comisiones acumuladas</h3>
-      <p class="section-lead">Según lo acumulado en tu año calificable (12 meses desde que abres tu backoffice).</p>
-      <div class="ranks">
-        <div><span>Junior</span><strong>$500</strong></div>
-        <div><span>Intermedio</span><strong>$1.500</strong></div>
-        <div><span>Avanzado</span><strong>$5.000</strong></div>
-        <div><span>Pro</span><strong>$10.000</strong></div>
-        <div><span>Senior Pro</span><strong>$25.000</strong></div>
-        <div><span>Doble Senior Pro</span><strong>$50.000</strong></div>
-        <div><span>Triple Senior Pro</span><strong>$100.000</strong></div>
-        <div><span>Presidencial</span><strong>$250.000</strong></div>
-      </div>
-      <p class="note">Importes en USD. Los ingresos dependen del trabajo de cada persona y no están garantizados.</p>
-    </div>
-  </section>
 
   <section class="section cta" id="empezar">
     <div class="wrap split">
@@ -240,8 +157,8 @@
         <a class="btn btn-gold btn-lg js-registro" href="#empezar">Quiero empezar</a>
       </div>
       <picture class="split-img">
-        <source srcset="assets/img/puerta.webp" type="image/webp">
-        <img src="assets/img/puerta.jpg" alt="Puerta dorada abierta con el logotipo de Masters Traders" width="630" height="790" loading="lazy">
+        <source srcset="assets/img/foto.webp" type="image/webp">
+        <img src="assets/img/foto.jpg" alt="Sonriente, con traje negro, delante de una pantalla con gráficos de trading" width="742" height="424" loading="lazy">
       </picture>
     </div>
   </section>
@@ -250,7 +167,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <p class="risk"><strong>Aviso de riesgo:</strong> operar con divisas, CFD y otros productos apalancados conlleva un riesgo alto y puedes perder todo el capital invertido. Ninguna herramienta, señal ni bot garantiza resultados. Esta página es solo informativa y no constituye asesoramiento financiero.</p>
-    <p class="small">Página informativa independiente. Masters Traders y sus marcas pertenecen a sus respectivos propietarios. © <span id="year">2026</span> TraderFit · tradersfit.se</p>
+    <p class="small">Página informativa independiente. Masters Traders y sus marcas pertenecen a sus respectivos propietarios. © <span id="year">2026</span> TradersFit · tradersfit.se</p>
   </div>
 </footer>
 <script src="assets/site.js" defer></script>
