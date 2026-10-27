@@ -22,7 +22,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
   }
 })();
 
-// Preloader: the counter follows the images that load up front and reaches 100 % when the page is complete
+// Preloader: the bar follows the images that load up front and reaches 100 % when the page is complete
 (() => {
   const root = document.documentElement;
   const preloader = document.querySelector(".preloader");
@@ -32,7 +32,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
     history.scrollRestoration = "manual";
     scrollTo(0, 0);
   }
-  const num = document.getElementById("preloader-num");
   const bar = document.getElementById("preloader-bar");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const minTime = reduced ? 0 : 1400; // long enough to see the count, even when everything is cached
@@ -66,7 +65,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
     const target = Math.min(real, time) * 100;
     shown += Math.max(0.6, (target - shown) * 0.12);
     shown = Math.min(shown, target);
-    num.textContent = Math.floor(shown);
     bar.style.width = shown + "%";
     if (shown >= 100) setTimeout(finish, 250);
     else requestAnimationFrame(tick);
