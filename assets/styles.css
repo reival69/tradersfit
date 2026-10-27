@@ -118,6 +118,7 @@ strong { color: var(--gold-light); font-weight: 600; }
 
 /* Cards */
 .cards { display: grid; gap: 18px; margin-top: 12px; }
+.cards-2 { grid-template-columns: repeat(2, 1fr); }
 .cards-3 { grid-template-columns: repeat(3, 1fr); }
 .cards-4 { grid-template-columns: repeat(4, 1fr); }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
@@ -160,6 +161,6 @@ strong { color: var(--gold-light); font-weight: 600; }
   .section { padding: 64px 0; }
 }
 @media (max-width: 560px) {
-  .cards-3, .cards-4 { grid-template-columns: 1fr; }
+  .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
   .hero-text { padding: 32px 0 56px; }
 }
