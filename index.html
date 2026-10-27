@@ -42,22 +42,32 @@
     <nav class="nav" aria-label="Menú principal">
       <a href="#ecosistema">Ecosistema</a>
     </nav>
-    <a class="btn btn-gold btn-sm js-registro" href="#empezar">Quiero empezar</a>
   </div>
 </header>
 
 <main id="inicio">
   <section class="hero">
-    <picture>
-      <source srcset="assets/img/hero.webp" type="image/webp">
-      <img class="hero-img" src="assets/img/hero.jpg" alt="Masters Traders: una mano robótica y una mano humana ante un gráfico de trading, con piezas de ajedrez doradas" width="1679" height="937" fetchpriority="high">
-    </picture>
+    <div class="hero-pin">
+    <div class="hero-media">
+      <div class="hero-zoom">
+        <div class="hero-stage">
+          <picture>
+            <source srcset="assets/img/hero.webp" type="image/webp">
+            <img class="hero-img" src="assets/img/hero.jpg" alt="Masters Traders: una mano robótica y una mano humana ante un gráfico de trading, con piezas de ajedrez doradas" width="1679" height="937" fetchpriority="high">
+          </picture>
+          <div class="hero-shine" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="hero-dust" aria-hidden="true"></div>
+    </div>
+    <!-- Scroll room: while it passes, the hero stays pinned and zooms into the chart on the screen -->
+    <div class="hero-spacer" aria-hidden="true"></div>
+    </div>
     <div class="wrap hero-text">
       <p class="eyebrow">Disciplina · Estrategia · Resultados</p>
       <h1>Conocimiento, herramientas y comunidad para operar en los mercados</h1>
       <p class="lead">Formación de cero a avanzado, tecnología con inteligencia artificial y acompañamiento diario de un mentor. Todo en una sola membresía.</p>
       <div class="actions">
-        <a class="btn btn-gold js-registro" href="#empezar">Quiero empezar</a>
         <a class="btn btn-ghost" href="#ecosistema">Ver cómo funciona</a>
       </div>
     </div>
@@ -113,6 +123,7 @@
       <div>
         <p class="eyebrow">¿Qué es Masters Traders?</p>
         <h2>Herramientas reales en un solo ecosistema</h2>
+        <p class="section-lead">Estrategias de trading y marketing que se miden, se prueban y se escalan.</p>
         <ul class="features">
           <li><span class="num">01</span><div><h3>Academia</h3><p>Formación de cero a avanzado, para aprender a tu ritmo.</p></div></li>
           <li><span class="num">02</span><div><h3>App con IA</h3><p>Analiza el mercado en tiempo real, muestra posibles puntos de entrada y te explica el porqué de cada movimiento. Incluye backtesting.</p></div></li>

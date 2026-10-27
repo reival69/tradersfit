@@ -47,13 +47,30 @@ strong { color: var(--gold-light); font-weight: 600; }
 .reveal { opacity: 0; transform: perspective(900px) translate3d(0, 24px, -220px); filter: blur(6px); transition: opacity .9s ease, transform 1.1s cubic-bezier(.16, 1, .3, 1), filter .9s ease; transition-delay: var(--d, 0s); }
 .reveal.is-in { opacity: 1; transform: none; filter: none; }
 .is-loading .reveal.is-in { opacity: 0; transform: perspective(900px) translate3d(0, 24px, -220px); filter: blur(6px); } /* wait behind the counter */
-.hero { overflow: hidden; }
-.is-ready .hero-img { animation: hero-in 1.6s cubic-bezier(.16, 1, .3, 1) both, hero-push 24s 1.6s ease-out forwards; }
+.is-ready .hero-stage { animation: hero-in 1.6s cubic-bezier(.16, 1, .3, 1) both, hero-breathe 9s 1.6s ease-in-out infinite alternate; }
 @keyframes hero-in { from { opacity: 0; transform: scale(.82); filter: blur(10px); } to { opacity: 1; transform: scale(1); filter: none; } }
-@keyframes hero-push { to { transform: scale(1.03); } } /* small, so the side texts of the image stay inside */
+@keyframes hero-breathe { to { transform: scale(1.025); } } /* small, so the side texts of the image stay inside */
+
+/* Living hero: a shine sweeps over the bright gold parts and gold dust rises.
+   While scrolling, the hero stays pinned and zooms into the chart on the screen (site.js sets --hz and --ho). */
+.hero { overflow: clip; } /* clip, not hidden, so position: sticky still works */
+.hero-media { position: sticky; top: 64px; overflow: clip; opacity: var(--ho, 1); }
+.hero-zoom { transform: scale(var(--hz, 1)); transform-origin: 51.3% 68.5%; } /* centre of the chart on the screen */
+.hero-spacer { height: min(80vh, 60vw); }
+.hero-stage { position: relative; }
+.hero-shine { position: absolute; inset: 0; overflow: hidden; pointer-events: none; mix-blend-mode: screen; -webkit-mask: url(img/hero.jpg) 0 0 / 100% 100%; mask: url(img/hero.jpg) 0 0 / 100% 100% luminance; }
+.hero-shine::before { content: ""; position: absolute; top: -10%; bottom: -10%; left: -30%; width: 22%; background: linear-gradient(100deg, transparent, rgba(255, 232, 160, .7), transparent); transform: skewX(-18deg); opacity: 0; }
+.is-ready .hero-shine::before { animation: hero-shine 7s 2s ease-in-out infinite; }
+@keyframes hero-shine { 0% { left: -30%; opacity: 1; } 45%, 100% { left: 120%; opacity: 1; } }
+.hero-dust { position: absolute; inset: 0; overflow: hidden; pointer-events: none; container-type: size; }
+.hero-dust i { position: absolute; left: var(--x); bottom: -2%; width: var(--s); height: var(--s); border-radius: 50%; background: #f6dc95; box-shadow: 0 0 8px 2px rgba(241, 212, 138, .55); opacity: 0; }
+.is-ready .hero-dust i { animation: hero-dust var(--t) var(--d) linear infinite; }
+@keyframes hero-dust { 0% { transform: translate(0, 0); opacity: 0; } 15% { opacity: .85; } 80% { opacity: .5; } 100% { transform: translate(var(--dx), -105cqh); opacity: 0; } }
+.split-img img { transform: translate3d(0, var(--py, 0), 0); }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; filter: none; transition: none; }
-  .is-ready .hero-img { animation: none; }
+  .is-ready .hero-stage, .is-ready .hero-shine::before, .is-ready .hero-dust i { animation: none; }
 }
 
 /* Buttons */
