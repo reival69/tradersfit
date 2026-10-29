@@ -76,7 +76,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
   requestAnimationFrame(tick);
 })();
 
-// Motion while scrolling: gold dust in the hero, the hero zooms into the chart, and the images float a little
+// Motion while scrolling: blue sparks in the hero, the hero zooms into the chart, and the images float a little
 (() => {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const dust = document.querySelector(".hero-dust");
