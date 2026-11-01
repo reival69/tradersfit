@@ -49,19 +49,29 @@ strong { color: var(--blue); font-weight: 600; }
 .is-loading .reveal.is-in { opacity: 0; transform: perspective(900px) translate3d(0, 24px, -220px); filter: blur(6px); } /* wait behind the counter */
 .is-ready .hero-stage { animation: hero-in 1.6s cubic-bezier(.16, 1, .3, 1) both, hero-breathe 9s 1.6s ease-in-out infinite alternate; }
 @keyframes hero-in { from { opacity: 0; transform: scale(.82); filter: blur(10px); } to { opacity: 1; transform: scale(1); filter: none; } }
-@keyframes hero-breathe { to { transform: scale(1.025); } } /* small, so the side texts of the image stay inside */
+@keyframes hero-breathe { to { transform: scale(1.025); } } /* small, so the side words stay inside */
 
-/* Living hero: a shine sweeps over the bright metal parts and blue sparks rise.
+/* Living hero: the chart draws itself, a shine sweeps over the screen and blue sparks rise.
    While scrolling, the hero stays pinned and zooms into the chart on the screen (site.js sets --hz and --ho). */
 .hero { overflow: clip; } /* clip, not hidden, so position: sticky still works */
 .hero-media { position: sticky; top: 64px; overflow: clip; opacity: var(--ho, 1); }
-.hero-zoom { transform: scale(var(--hz, 1)); transform-origin: 51.3% 68.5%; } /* centre of the chart on the screen */
+.hero-zoom { transform: scale(var(--hz, 1)); transform-origin: 50% 67.5%; } /* centre of the chart on the screen */
 .hero-spacer { height: min(80vh, 60vw); }
 .hero-stage { position: relative; }
-.hero-shine { position: absolute; inset: 0; overflow: hidden; pointer-events: none; mix-blend-mode: screen; -webkit-mask: url(img/hero.jpg) 0 0 / 100% 100%; mask: url(img/hero.jpg) 0 0 / 100% 100% luminance; }
-.hero-shine::before { content: ""; position: absolute; top: -10%; bottom: -10%; left: -30%; width: 22%; background: linear-gradient(100deg, transparent, rgba(190, 220, 255, .7), transparent); transform: skewX(-18deg); opacity: 0; }
+.hero-shine { position: absolute; left: 31.25%; top: 46.7%; width: 37.5%; height: 41.7%; border-radius: 1.1vw; overflow: hidden; pointer-events: none; mix-blend-mode: screen; } /* over the screen in the drawing */
+.hero-shine::before { content: ""; position: absolute; top: -10%; bottom: -10%; left: -30%; width: 22%; background: linear-gradient(100deg, transparent, rgba(190, 220, 255, .22), transparent); transform: skewX(-18deg); opacity: 0; }
 .is-ready .hero-shine::before { animation: hero-shine 7s 2s ease-in-out infinite; }
 @keyframes hero-shine { 0% { left: -30%; opacity: 1; } 45%, 100% { left: 120%; opacity: 1; } }
+.hero-candles > g { transform-box: fill-box; transform-origin: 50% 100%; }
+.is-ready .hero-candles > g { animation: hero-candle .5s calc(.5s + var(--i) * 45ms) cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes hero-candle { from { opacity: 0; transform: scaleY(0); } }
+.hero-ma { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.is-ready .hero-ma { animation: hero-draw 1.8s .6s ease-out both; }
+@keyframes hero-draw { from { stroke-dashoffset: 1; } }
+.hero-dot { transform-box: fill-box; transform-origin: center; }
+.is-ready .hero-dot { animation: hero-pulse 1.8s 2.4s ease-in-out infinite; }
+@keyframes hero-pulse { 50% { transform: scale(1.7); opacity: .55; } }
+@media (max-width: 600px) { .hero-words, .hero-sub { display: none; } } /* too small to read on a phone */
 .hero-dust { position: absolute; inset: 0; overflow: hidden; pointer-events: none; container-type: size; }
 .hero-dust i { position: absolute; left: var(--x); bottom: -2%; width: var(--s); height: var(--s); border-radius: 50%; background: #bcd8ff; box-shadow: 0 0 8px 2px rgba(110, 170, 255, .55); opacity: 0; }
 .is-ready .hero-dust i { animation: hero-dust var(--t) var(--d) linear infinite; }
@@ -70,7 +80,7 @@ strong { color: var(--blue); font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; filter: none; transition: none; }
-  .is-ready .hero-stage, .is-ready .hero-shine::before, .is-ready .hero-dust i { animation: none; }
+  .is-ready .hero-stage, .is-ready .hero-shine::before, .is-ready .hero-dust i, .is-ready .hero-candles > g, .is-ready .hero-ma, .is-ready .hero-dot { animation: none; }
 }
 
 /* Buttons */
@@ -95,9 +105,11 @@ strong { color: var(--blue); font-weight: 600; }
 
 /* Hero */
 .hero { position: relative; }
-.hero-img { width: 100%; aspect-ratio: 1679 / 937; object-fit: cover; }
+.hero-art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 .hero-text { padding: 48px 0 72px; }
 .hero-text h1 { max-width: 20ch; margin-bottom: 18px; }
+.hero-sub-m { display: none; }
+@media (max-width: 600px) { .hero-sub-m { display: block; margin: 0 0 28px; color: var(--muted); font-size: 1.05rem; } }
 
 /* Two columns */
 .split { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: center; }
@@ -108,14 +120,19 @@ strong { color: var(--blue); font-weight: 600; }
 .role { font: italic 500 1.1rem/1 var(--body); color: var(--muted); margin: -4px 0 24px; }
 
 /* Lists */
-.questions, .bullets { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.questions li { padding: 14px 18px; background: var(--bg-alt); border: 1px solid var(--line); border-left: 4px solid var(--yellow); border-radius: 0; }
+.bullets { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+h2 + .bullets { margin-top: 24px; }
+#por-que h2, #por-que .bullets { max-width: 760px; } /* single column: keep lines short enough to read */
 .bullets li { position: relative; padding-left: 28px; color: var(--muted); }
 .bullets li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 3px rgba(255, 199, 44, .3); }
 .features { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 18px; }
 .features li { display: flex; gap: 18px; align-items: flex-start; }
 .features p { margin: 4px 0 0; color: var(--muted); }
 .num { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); color: var(--text); font: 700 .85rem/1 var(--head); }
+.quote { margin: 32px 0 0; padding: 20px 24px; background: var(--bg-alt); border-left: 4px solid var(--yellow); }
+.quote p { margin: 0; font: italic 500 1.1rem/1.5 var(--body); color: var(--text); }
+.quote cite { display: block; margin-top: 8px; font: 600 .9rem/1.4 var(--body); color: var(--muted); }
+.dare { margin: 24px 0 0; font: 800 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--head); color: var(--blue); }
 
 /* Cards */
 .cards { display: grid; gap: 18px; margin-top: 12px; }

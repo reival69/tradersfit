@@ -4,7 +4,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 (() => {
   if (!("IntersectionObserver" in window)) return;
   const targets = document.querySelectorAll(
-    ".hero-text > *, main .eyebrow, main h2, .role, .section-lead, .questions li, .card, .features li, .bullets li, .split-img, .cta .btn"
+    ".hero-text > *, main .eyebrow, main h2, .role, .section-lead, .card, .features li, .bullets li, .split-img, .quote, .dare, .cta .btn"
   );
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
@@ -14,7 +14,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     }
   }, { rootMargin: "0px 0px -8% 0px" });
   for (const el of targets) {
-    const siblings = [...el.parentElement.children].filter((s) => s.matches(".card, .features li, .questions li, .bullets li, .hero-text > *"));
+    const siblings = [...el.parentElement.children].filter((s) => s.matches(".card, .features li, .bullets li, .hero-text > *"));
     const i = siblings.indexOf(el);
     if (i > 0) el.style.setProperty("--d", Math.min(i, 6) * 0.12 + "s");
     el.classList.add("reveal");
