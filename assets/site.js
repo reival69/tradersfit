@@ -76,7 +76,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
   requestAnimationFrame(tick);
 })();
 
-// Motion while scrolling: blue sparks in the hero, the hero zooms into the chart, and the images float a little
+// Motion while scrolling: blue sparks in the hero and the images float a little
 (() => {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const dust = document.querySelector(".hero-dust");
@@ -87,19 +87,11 @@ document.getElementById("year").textContent = new Date().getFullYear();
     dust?.append(p);
   }
 
-  const media = document.querySelector(".hero-media");
-  const spacer = document.querySelector(".hero-spacer");
   const imgs = document.querySelectorAll(".split-img img");
   let queued = false;
   const update = () => {
     queued = false;
     const vh = innerHeight;
-    if (media && spacer) {
-      const p = Math.min(1, Math.max(0, scrollY / spacer.offsetHeight)); // 0 at the top, 1 when the pin ends
-      const ease = p * p * (3 - 2 * p);
-      media.style.setProperty("--hz", (1 + ease * 2.4).toFixed(3));
-      media.style.setProperty("--ho", (p < 0.75 ? 1 : 1 - (p - 0.75) * 2.8).toFixed(3));
-    }
     for (const img of imgs) {
       const box = img.getBoundingClientRect();
       if (box.bottom < 0 || box.top > vh) continue;
