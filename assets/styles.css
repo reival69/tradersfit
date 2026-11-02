@@ -123,6 +123,8 @@ strong { color: var(--blue); font-weight: 600; }
 /* Lists */
 .bullets { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 h2 + .bullets, h2 + .cards { margin-top: 24px; }
+#por-que { padding-top: 24px; } /* same white as the hero text above, so a small gap is enough */
+.hero-text > :last-child { margin-bottom: 0; }
 #por-que h2, #por-que .bullets { max-width: 760px; } /* single column: keep lines short enough to read */
 .bullets li { position: relative; padding-left: 28px; color: var(--muted); }
 .bullets li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 3px rgba(255, 199, 44, .3); }
